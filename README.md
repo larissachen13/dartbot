@@ -30,6 +30,32 @@ The project is deployed to heroku with the following app instance url:
 #### Location 
 
 - GET `/api/locs` returns gps (lat, long) and content for all locations
+
+example return: 
+
+```javascript
+// original query: http://dartmouthbot.herokuapp.com/api/locs
+[
+  {
+    "_id": "57b24937a708162200b52f66",
+    "content": "kemeny hall",
+    "gps": {
+      "lat": "35.364",
+      "long": "24.3423"
+    },
+    "id": "57b24937a708162200b52f66"
+  },
+  {
+    "_id": "57b24f01a708162200b52f67",
+    "content": "dartmouth hall is the best hall to known to man",
+    "gps": {
+      "lat": "3234.4444",
+      "long": "24.3423"
+    },
+    "id": "57b24f01a708162200b52f67"
+  }
+]
+```
 - POST `/api/locs` creates a new location (w/ gps and content). 
 - GET `/api/locs/:id` returns gps (lat, long) for a specific location
 - PUT `/api/locs/:id` edits an existing location with the passed in `id`
