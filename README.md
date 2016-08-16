@@ -27,6 +27,8 @@ The project is deployed to heroku with the following app instance url:
 
 ## API Endpoints
 
+Note that all endpoints are prefixed with `/api`, i.e. it is `http://dartmouthbot.herokuapp.com/api/locs` not `http://dartmouthbot.herokuapp.com/locs`
+
 #### Location 
 
 - GET `/api/locs` returns gps (lat, long) and content for all locations
@@ -56,32 +58,32 @@ example return:
   }
 ]
 ```
-- POST `/api/locs` creates a new location (w/ gps and content). 
-- GET `/api/locs/:id` returns gps (lat, long) for a specific location
-- PUT `/api/locs/:id` edits an existing location with the passed in `id`
-- DELETE `/api/locs/:id` deletes an existing location with the passed in `id`
+- POST `/api/locs` with fields `{ gps: { lat: '' , long: '' }, content:'' }` creates a new location (w/ gps and content). 
+- GET `/api/locs/:id` with field `{ id: '' }` returns gps (lat, long) for a specific location
+- PUT `/api/locs/:id` with field `{ id: '' }` edits an existing location with the passed in `id`
+- DELETE `/api/locs/:id` with field `{ id: '' }` deletes an existing location with the passed in `id`
 
 #### Bio 
 
 - GET `/api/bios` returns name, content, and image (TODO) for all tour guide bios
-- POST `/api/bios` creates a new bio (w/ name, content, and image). 
-- GET `/api/bios/:id` returns name, content, and image (TODO) for tour guide bio having id equal to passed in id
-- PUT `/api/bios/:id` edits an existing bio possessing the passed in `id`
-- DELETE `/api/bios/:id` deletes an existing bio possessing the passed in `id`
+- POST `/api/bios` with fields `{name: '', content: '',  image: '' }` creates a new bio (w/ name, content, and image as listed). 
+- GET `/api/bios/:id` with fields `{id: '' }` returns name, content, and image (TODO) for tour guide bio having id equal to passed in id
+- PUT `/api/bios/:id` with fields `{id: '' }` edits an existing bio possessing the passed in `id`
+- DELETE `/api/bios/:id` with fields `{id: '' }` deletes an existing bio possessing the passed in `id`
 
-#### User
+#### Authentication
 
-reference TODO at the top
+- POST `/api/signin` with fields `{email: '', password: '', username: '' }` logs in a pre-existing user 
+- POST `/api/signup` with fields `{email: '', password: '', username: '' }` creates a user account with passed in email address, username, and password as fields (fancy auth done for to preserve password security). Also logs user in.
 
 ## Authors
 
-TODO
+Ahsan Azim, Alma Wang
 
-## Acknowledgments
-
-TODO
 
 # TODO 
-- finalize login method and design backend (auth, etc) accordingly
+***
+
+- thoroughly test w/ actual frontend (rudimentary testing already done via other means)
 - setup S3 for image storage
 
