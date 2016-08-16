@@ -1,7 +1,6 @@
 // import controllers + express routing
 import { Router } from 'express';
 import * as Loc from './controllers/loc_controller';
-import * as Profile from './controllers/profile_controller';
 import * as Bio from './controllers/bio_controller';
 // import * as User from './controllers/user_controller';
 
@@ -35,12 +34,8 @@ router.route('/bios/:id')
   .get(Bio.getBio)              // get single bio
   .delete(Bio.deleteBio);       // delete single bio
 
-// profiles
-router.route('/profiles')
-  .post(Profile.createProfile)
-  .get(Profile.getProfile);
-
 // login?
+
 // router.post('/signin', requireSignin, User.signin);
 // router.post('/signup', User.signup);
 
