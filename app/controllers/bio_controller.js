@@ -3,11 +3,13 @@ import Bio from '../models/bio_model';
 export const createBio = (req, res) => {
   const bio = new Bio();
   bio.name = req.body.name;
+  bio.major = req.body.major;
+  bio.year = req.body.year;
   bio.content = req.body.content;
   bio.image = 'nothing for now';        // using s3, will store img url
   bio.save()
   .then(result => {
-    res.json({ message: 'Bio created!' });
+    res.json({ result });
   })
   .catch(error => {
     res.json({ error });
@@ -15,39 +17,41 @@ export const createBio = (req, res) => {
 };
 
 export const getBios = (req, res) => {
-  Bio.find({}, 'id name content image',
-    (err, docs) => {
-      if (err) {
-        res.send(err);
-      }
-
-      res.json(docs);
-    });
+  Bio.find()
+  .then(bios => {
+    res.json(bios);
+  })
+  .catch(error => {
+    res.json({ error });
+  });
 };
 
 export const getBio = (req, res) => {
-  Bio.findById(req.params.id, 'id name content image',
-    (err, docs) => {
-      if (err) {
-        res.send(err);
-      }
-      res.json(docs);
-    });
+  Bio.findById(req.params.id)
+  .then(bio => {
+    res.json(bio);
+  })
+  .catch(error => {
+    res.json({ error });
+  });
 };
 
 export const updateBio = (req, res) => {
-  Bio.update({ id: req.params.id }, { name: req.body.name, content: req.body.content },
-      (err, raw) => {
-        if (err) {
-          res.send(err);
-        }
-        getBio(req, res);
-      });
+  Bio.update({ id: req.params.id }, { name: req.body.name, content: req.body.content, major: req.body.major, year: req.body.year })
+  .then(() => {
+    getBio(req, res);
+  })
+  .catch(error => {
+    res.json({ error });
+  });
 };
 
 export const deleteBio = (req, res) => {
-  Bio.remove({ id: req.params.id },
-    (err) => {
-      res.send(err);
-    });
+  Bio.findByIdAndRemove(req.params.id)
+  .then(result => {
+    res.json(result);
+  })
+  .catch(error => {
+    res.json({ error });
+  });
 };
