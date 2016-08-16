@@ -27,7 +27,7 @@ router.route('/locs/:id')
 // bios
 
 router.route('/bios')
-  .post(Bio.createBio)          // add new bio
+  .post(requireAuth, Bio.createBio)          // add new bio
   .get(Bio.getBios);                         // get all bios
 
 router.route('/bios/:id')
