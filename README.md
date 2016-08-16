@@ -27,6 +27,8 @@ The project is deployed to heroku with the following app instance url:
 
 ## API Endpoints
 
+Note that all endpoints are prefixed with `/api`, i.e. it is `http://dartmouthbot.herokuapp.com/api/locs` not `http://dartmouthbot.herokuapp.com/locs`
+
 #### Location 
 
 - GET `/api/locs` returns gps (lat, long) and content for all locations
@@ -69,19 +71,19 @@ example return:
 - PUT `/api/bios/:id` edits an existing bio possessing the passed in `id`
 - DELETE `/api/bios/:id` deletes an existing bio possessing the passed in `id`
 
-#### User
+#### Authentication
 
-reference TODO at the top
+- POST `/api/signin` logs in a pre-existing user 
+- POST `/api/signup` creates a user account with passed in email address, username, and password as fields (fancy auth done for to preserve password security). Also logs user in.
 
 ## Authors
 
-TODO
+Ahsan Azim, Alma Wang
 
-## Acknowledgments
-
-TODO
 
 # TODO 
-- finalize login method and design backend (auth, etc) accordingly
+***
+
+- thoroughly test w/ actual frontend (rudimentary testing already done via other means)
 - setup S3 for image storage
 
