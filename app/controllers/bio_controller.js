@@ -1,7 +1,5 @@
 import Bio from '../models/bio_model';
 
-badSyntax;
-
 export const createBio = (req, res) => {
   const bio = new Bio();
   bio.name = req.body.name;
