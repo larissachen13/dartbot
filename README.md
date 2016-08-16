@@ -58,23 +58,23 @@ example return:
   }
 ]
 ```
-- POST `/api/locs` creates a new location (w/ gps and content). 
-- GET `/api/locs/:id` returns gps (lat, long) for a specific location
-- PUT `/api/locs/:id` edits an existing location with the passed in `id`
-- DELETE `/api/locs/:id` deletes an existing location with the passed in `id`
+- POST `/api/locs` with fields `{ gps: { lat: '' , long: '' }, content:'' }` creates a new location (w/ gps and content). 
+- GET `/api/locs/:id` with field `{ id: '' }` returns gps (lat, long) for a specific location
+- PUT `/api/locs/:id` with field `{ id: '' }` edits an existing location with the passed in `id`
+- DELETE `/api/locs/:id` with field `{ id: '' }` deletes an existing location with the passed in `id`
 
 #### Bio 
 
 - GET `/api/bios` returns name, content, and image (TODO) for all tour guide bios
-- POST `/api/bios` creates a new bio (w/ name, content, and image). 
-- GET `/api/bios/:id` returns name, content, and image (TODO) for tour guide bio having id equal to passed in id
-- PUT `/api/bios/:id` edits an existing bio possessing the passed in `id`
-- DELETE `/api/bios/:id` deletes an existing bio possessing the passed in `id`
+- POST `/api/bios` with fields `{name: '', content: '',  image: '' }` creates a new bio (w/ name, content, and image as listed). 
+- GET `/api/bios/:id` with fields `{id: '' }` returns name, content, and image (TODO) for tour guide bio having id equal to passed in id
+- PUT `/api/bios/:id` with fields `{id: '' }` edits an existing bio possessing the passed in `id`
+- DELETE `/api/bios/:id` with fields `{id: '' }` deletes an existing bio possessing the passed in `id`
 
 #### Authentication
 
-- POST `/api/signin` logs in a pre-existing user 
-- POST `/api/signup` creates a user account with passed in email address, username, and password as fields (fancy auth done for to preserve password security). Also logs user in.
+- POST `/api/signin` with fields `{email: '', password: '', username: '' }` logs in a pre-existing user 
+- POST `/api/signup` with fields `{email: '', password: '', username: '' }` creates a user account with passed in email address, username, and password as fields (fancy auth done for to preserve password security). Also logs user in.
 
 ## Authors
 
